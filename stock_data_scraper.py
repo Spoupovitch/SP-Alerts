@@ -10,7 +10,7 @@ import os # needed for file operations
 # Compile a JSON list of any increases above the threshold
 
 START_TIME = "9:00AM"
-PCT_CHG_THRESHOLD = 5
+PCT_CHG_THRESHOLD = 0 # just watch all stocks for now, since there are only 5 max
 TICKER_LIST = 'company_list.json'
 OUTPUT_FILE = 'crap.json'
 
