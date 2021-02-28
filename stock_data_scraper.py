@@ -39,7 +39,8 @@ for symbol in ticker_list['Symbol']:
     pct_chg = data[0].get('10. change percent')
     # remove '%', parse float and round percentage change
     pct_chg = round(float(pct_chg[:-1]), 2)
-    print(symbol, "price change %:", pct_chg)
+    # DEBUG
+    #print(symbol, "price change %:", pct_chg)
 
     if abs(pct_chg > PCT_CHG_THRESHOLD):
         # DEBUG

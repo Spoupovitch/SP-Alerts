@@ -22,9 +22,9 @@ with open(ATTACHMENT, 'r') as inc_tickers:
 
 msg.add_attachment(f_data, subtype='json', filename=TIMESTAMP + '_' + ATTACHMENT)
 # DEBUG
-print(msg)
+#print(msg)
 
 # use SMTP class w SSL connection
-# with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-#     smtp.login(env.EMAIL_SENDER, env.EMAIL_PASSWORD)
-#     smtp.send_message(msg)
+with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+    smtp.login(env.EMAIL_SENDER, env.EMAIL_PASSWORD)
+    smtp.send_message(msg)
