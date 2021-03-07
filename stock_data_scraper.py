@@ -32,16 +32,8 @@ for symbol in ticker_list['Symbol']:
 
     curr_prc = curr_ticker.info['ask']
     open_prc = curr_ticker.info['open']
-    # write algo to calculate price percentage change since BOD
+    # algo to calculate price percentage change since BOD
     pct_chg = round((curr_prc - open_prc) / open_prc * 100, 2)
-
-    # create time series
-    #ts = TimeSeries(key=env.ALPHA_VANTAGE_API_KEY, output_format='json')
-    #data = ts.get_quote_endpoint(symbol)
-
-    #pct_chg = data[0].get('10. change percent')
-    # remove '%', parse float and round percentage change
-    #pct_chg = round(float(pct_chg[:-1]), 2)
 
     # --DEBUG--
     #print()
