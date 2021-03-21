@@ -29,10 +29,10 @@ while 1:
     CURR_TIME = dt.datetime.now(timezone('EST')).strftime("%H:%M")
 
     # logic for discerning when markets are closed
-    # if CURR_TIME < OPEN_TIME or CLOSE_TIME < CURR_TIME or dt.datetime.today().weekday() > 4:
-    #     # send email reminder to apply filter
-    #     os.system(EOD_ALERT)
-    #     sys.exit("Markets are closed, exiting.")
+    if CURR_TIME < OPEN_TIME or CLOSE_TIME < CURR_TIME or dt.datetime.today().weekday() > 4:
+        # send email reminder to apply filter
+        os.system(EOD_ALERT)
+        sys.exit("Markets are closed, exiting.")
 
     schedule.run_pending()
     # delay execution for given # of seconds
