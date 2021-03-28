@@ -13,7 +13,8 @@ CLOSE_TIME = dt.datetime.strptime("16:00", "%H:%M").strftime("%H:%M")
 
 SCRAPE_SCRIPT = 'stock_data_scraper.py'
 MAIL_SCRIPT = 'email_updater.py'
-EOD_ALERT = 'eod_email.py'
+BOD_SCRAPE = 'security_scraper.py'
+EOD_ALERT = 'eod_reminder.py'
 
 def scrape_stock_data():
     os.system(SCRAPE_SCRIPT)
@@ -28,11 +29,16 @@ schedule.every(1).minute.do(send_email)
 while 1:
     CURR_TIME = dt.datetime.now(timezone('EST')).strftime("%H:%M")
 
-    # logic for discerning when markets are closed
-    if CURR_TIME < OPEN_TIME or CLOSE_TIME < CURR_TIME or dt.datetime.today().weekday() > 4:
+    # discern when markets are closed
+#    if CURR_TIME < OPEN_TIME or CLOSE_TIME < CURR_TIME or dt.datetime.today().weekday() > 4:
         # send email reminder to apply filter
-        os.system(EOD_ALERT)
-        sys.exit("Markets are closed, exiting.")
+#        os.system(EOD_ALERT)
+#        sys.exit("Markets are closed, halting execution.")
+
+    # execute at beginning of weekday
+    if CURR_TIME == OPEN_TIME and dt.datetime.today().weekday() < 5:
+        # retrieve list of securities to watch for day
+        os.system(BOD_SCRAPE)
 
     schedule.run_pending()
     # delay execution for given # of seconds

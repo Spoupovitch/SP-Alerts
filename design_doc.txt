@@ -2,15 +2,15 @@ Tickr
 
 notify of occurances when a stock rises above a certain percentage threshold
 
-threshold - how to set/ modify?
+threshold - how to set/ modify? input argument?
 
 at 9:30 AM EST:
 create list of stocks to watch
 	stocks - which should be monitored?
 
-each minute | 30 secs | 1 sec:
+each minute | 30 secs:
 	check price change percentage of each stock in the list
-	populate report list with increases above threshold (include symbl, old_prc, new_prc pct_chg)
+	populate report list with increases above threshold (include symbl, old_prc, new_prc, pct_chg)
 	send email with report list to [email address]
 	empty report list
 
